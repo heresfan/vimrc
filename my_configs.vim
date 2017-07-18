@@ -70,6 +70,10 @@ let g:syntastic_go_checkers = ['errcheck']
 "let s:tlist_def_go_settings = 'go;g:enum;s:struct;u:union;t:type;' .
 "                           \ 'v:variable;f:function'
 
+""""""""""""""""""""""""""""""
+" => tagbar
+""""""""""""""""""""""""""""""
+let g:neocomplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""
 " => tagbar

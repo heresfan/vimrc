@@ -7,3 +7,6 @@
 [submodule "my_plugins/tagbar"]
 	path = my_plugins/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule "my_plugins/ultisnips"]
+	path = my_plugins/ultisnips
+	url = https://github.com/SirVer/ultisnips.git

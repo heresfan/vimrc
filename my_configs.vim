@@ -41,6 +41,14 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
+" auto close 
+inoremap ` ``<ESC>i
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {<CR>}<ESC>O
+
 """""""""""""""""""""""""""""
 " => taglist
 """""""""""""""""""""""""""""

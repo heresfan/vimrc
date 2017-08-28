@@ -42,12 +42,13 @@ if has("multi_byte")
 endif
 
 " auto close 
-inoremap ` ``<ESC>i
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {<CR>}<ESC>O
+"inoremap ` ``<ESC>i
+"inoremap ' ''<ESC>i
+"inoremap " ""<ESC>i
+"inoremap ( ()<ESC>i
+"inoremap [ []<ESC>i
+"inoremap { {}<ESC>i
+inoremap {<CR> {<CR>}<ESC>O
 
 """""""""""""""""""""""""""""
 " => taglist
@@ -82,6 +83,7 @@ let g:syntastic_go_checkers = ['errcheck']
 " => tagbar
 """"""""""""""""""""""""""""""
 let g:neocomplete#enable_at_startup = 1
+let g:tagbar_left = 1
 
 """"""""""""""""""""""""""""""
 " => tagbar

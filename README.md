@@ -371,6 +371,15 @@ Just do following:
 * Remove `~/.vim_runtime`
 * Remove any lines that reference `.vim_runtime` in your `~/.vimrc`
 
+## How to keep this forked repo up to date
+* Clone this forked repo.
+    `git clone https://github.com/heresfan/vimrc.git`
+* Add a `upstream` remote.
+    `git remote add upstream https://github.com/amix/vimrc.git`
+* Fetch udpates from `upstream` remote.
+    `git fetch upstream`
+* Merge from `upstream` remote into this forked repo.
+    `git merge upstream/master master`
 
 ## Doist
 

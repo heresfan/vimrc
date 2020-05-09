@@ -19,7 +19,7 @@
 "endif
 if has("gui_running")
     if has("gui_gtk2") || has("gui_gtk3")
-        set guifont=Monaco\ 13
+        set guifont=Monaco\ 15
     elseif has("gui_photon")
         set guifont=Monaco:s13
     elseif has("gui_kde")
@@ -41,6 +41,8 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
+set vb t_vb=
+au GuiEnter * set t_vb=
 " auto close 
 "inoremap ` ``<ESC>i
 "inoremap ' ''<ESC>i
@@ -72,6 +74,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck'] " vim default
 let g:go_metalinter_autosave = 0 " syntastic_go_checkers is used instead
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
+let g:go_def_mode = 'godef' " defaulted guru is so slow to jump
 " overwrite config in `vimrcs/plugins_config.vim`
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_go_checkers = ['errcheck']

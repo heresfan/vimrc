@@ -5,17 +5,15 @@ call ale#Set('c_cquery_executable', 'cquery')
 call ale#Set('c_cquery_cache_directory', expand('~/.cache/cquery'))
 
 function! ale_linters#c#cquery#GetProjectRoot(buffer) abort
-    let l:project_root = ale#path#FindNearestFile(a:buffer, 'compile_commands.json')
-    return !empty(l:project_root) ? fnamemodify(l:project_root, ':h') : ''
-endfunction
+    " Try to find cquery configuration files first.
+    let l:config = ale#path#FindNearestFile(a:buffer, '.cquery')
 
-function! ale_linters#c#cquery#GetExecutable(buffer) abort
-    return ale#Var(a:buffer, 'c_cquery_executable')
-endfunction
+    if !empty(l:config)
+        return fnamemodify(l:config, ':h')
+    endif
 
-function! ale_linters#c#cquery#GetCommand(buffer) abort
-    let l:executable = ale_linters#c#cquery#GetExecutable(a:buffer)
-    return ale#Escape(l:executable)
+    " Fall back on default project root detection.
+    return ale#c#FindProjectRoot(a:buffer)
 endfunction
 
 function! ale_linters#c#cquery#GetInitializationOptions(buffer) abort
@@ -25,8 +23,8 @@ endfunction
 call ale#linter#Define('c', {
 \   'name': 'cquery',
 \   'lsp': 'stdio',
-\   'executable_callback': 'ale_linters#c#cquery#GetExecutable',
-\   'command_callback': 'ale_linters#c#cquery#GetCommand',
-\   'project_root_callback': 'ale_linters#c#cquery#GetProjectRoot',
-\   'initialization_options_callback': 'ale_linters#c#cquery#GetInitializationOptions',
+\   'executable': {b -> ale#Var(b, 'c_cquery_executable')},
+\   'command': '%e',
+\   'project_root': function('ale_linters#c#cquery#GetProjectRoot'),
+\   'initialization_options': function('ale_linters#c#cquery#GetInitializationOptions'),
 \})

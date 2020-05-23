@@ -74,7 +74,12 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck'] " vim default
 let g:go_metalinter_autosave = 0 " syntastic_go_checkers is used instead
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
-let g:go_def_mode = 'godef' " defaulted guru is so slow to jump
+"let g:go_def_mode = 'godef' " defaulted guru is so slow to jump
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_gopls_enabled = 1
+let g:go_fmt_command = "goimports"
+
 " overwrite config in `vimrcs/plugins_config.vim`
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_go_checkers = ['errcheck']
